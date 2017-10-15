@@ -1,0 +1,6 @@
+#!/bin/bash
+
+./bin/clean
+./bin/complie
+./bin/complie_tests
+./bin/unit_test
