@@ -30,6 +30,7 @@ public class CalculatorTest {
 		assertEquals(6, Calculator.add("1\n2,3"));
 		assertEquals(1, Calculator.add("1,\n"));
 		assertEquals(2, Calculator.add("\n,1,1\n"));
+		assertEquals(2, Calculator.add("\n,1,\n1"));
 	}
 
 	@Test
@@ -59,5 +60,11 @@ public class CalculatorTest {
 	@Test
 	public void testBiggerThenThousand(){
 		assertEquals(2, Calculator.add("1001,2"));
+	}
+
+	@Test
+	public void testDifferentDelimiter(){
+		assertEquals(4, Calculator.add("//;2;2"));
+		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 }

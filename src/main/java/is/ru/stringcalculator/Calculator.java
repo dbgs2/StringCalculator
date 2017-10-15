@@ -11,31 +11,37 @@ public class Calculator {
 	public static int add(String text)
 	{
 		numbersList.clear();
+				
 		if (text.equals("")) 
 		{
 			return 0;
 		}
 		else
-		{
-			if(text.contains(","))
+		{	
+			String delimiter = ",";
+			if(text.contains("//"))
 			{
-				String numbers[] = text.split(",");				
+				delimiter = text.substring(2,3);
+				text = text.substring(3);
+			}				
+			if(text.contains(delimiter))
+			{
+				String numbers[] = text.split(delimiter);				
 				toArrayList(numbers);
 				numberListNewLineSplit();
 				String negatives = negativesNumbers();
-				
-				if(negatives != "")
-				{
-					throw new IllegalArgumentException("Negatives not allowed: " + negatives);
-				}
+				negativesCheck(negatives);
+	
 				return sum(numbersList);
 			}
+
+			//return stringToInt(numbersList.get(0));
 			return 1;
 		}	
 	}
 
 	
-
+	
 	private static int stringToInt(String number)
 	{
 		return Integer.parseInt(number);
@@ -78,19 +84,27 @@ public class Calculator {
 			if(numbersList.get(i).contains("\n"))
 			{
 				String temp[] = numbersList.get(i).split("\n");
-				if(temp.length == 1)
-				{								
-					numbersList.set(i, temp[0]);							
-				}
-				else if(temp.length == 2)
-				{
-					numbersList.set(i, temp[0]);
-					numbersList.add(temp[1]);	
-				}
-				else
+				if(temp.length == 0)
 				{
 					numbersList.remove(i);
 				}
+				if(temp.length == 1)
+				{
+					numbersList.set(i, temp[0]);					
+				}
+				else if(temp.length == 2)
+				{
+					if(temp[0].isEmpty())
+					{
+						numbersList.set(i, temp[1]);						
+					}
+					else
+					{
+						numbersList.set(i, temp[0]);
+						numbersList.add(temp[1]);						
+					}
+				}
+
 			}
 		}
 	}
@@ -112,6 +126,13 @@ public class Calculator {
 			}
 		}
 		return negativesNumbers;
+	}
+	private static void negativesCheck(String negatives)
+	{
+		if(negatives != "")
+		{
+			throw new IllegalArgumentException("Negatives not allowed: " + negatives);
+		}
 	}
 	
 }
