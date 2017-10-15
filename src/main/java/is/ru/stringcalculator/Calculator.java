@@ -2,7 +2,7 @@ package is.ru.stringcalculator;
 
 public class calculator {
 
-	public static in add(String text){
+	public static int add(String text){
 	
 	}
 }
