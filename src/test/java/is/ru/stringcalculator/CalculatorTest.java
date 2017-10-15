@@ -42,7 +42,7 @@ public class CalculatorTest {
 		catch(Exception e)
 		{
 			final String expected = "Negatives not allowed: -1";
-        	assertEquals( expected, e.getMessage());
+        	assertEquals(expected, e.getMessage());
 		}
 
 		try
@@ -52,8 +52,12 @@ public class CalculatorTest {
 		catch(Exception e)
 		{
 			final String expected = "Negatives not allowed: -4,-5";
-        	assertEquals( expected, e.getMessage());
+        	assertEquals(expected, e.getMessage());
 		}
-		
+	}
+
+	@Test
+	public void testBiggerThenThousand(){
+		assertEquals(2, Calculator.add("1001,2"));
 	}
 }

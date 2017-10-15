@@ -45,7 +45,10 @@ public class Calculator {
 		int total = 0;
 		for(String number : numbers)
 		{
-			total += stringToInt(number);
+			if(stringToInt(number) <= 1000)
+			{
+				total += stringToInt(number);
+			}			
 		}
 		return total;
 	}
@@ -54,7 +57,10 @@ public class Calculator {
 		int total = 0;
 		for(String number : numbers)
 		{
-			total += stringToInt(number);
+			if(stringToInt(number) <= 1000)
+			{
+				total += stringToInt(number);
+			}
 		}
 		return total;
 	}
