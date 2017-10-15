@@ -34,9 +34,15 @@ public class Calculator {
 	
 				return sum(numbersList);
 			}
-
-			//return stringToInt(numbersList.get(0));
-			return 1;
+			else
+			{
+				numbersList.add(text);
+				numberListNewLineSplit();
+				String negatives = negativesNumbers();
+				negativesCheck(negatives);
+				return sum(numbersList);
+			}
+			
 		}	
 	}
 

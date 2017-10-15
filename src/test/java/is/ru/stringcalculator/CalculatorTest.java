@@ -13,6 +13,7 @@ public class CalculatorTest {
 	@Test
 	public void testSingleNumber() {
 		assertEquals(1, Calculator.add("1"));
+		assertEquals(5, Calculator.add("5"));
 	}
 
 	@Test
@@ -37,8 +38,8 @@ public class CalculatorTest {
 	public void testNegetiveAdd(){
 		try
 		{
+			assertEquals(-1 , Calculator.add("-1"));
 			assertEquals(-1 , Calculator.add("-1,2"));
-			assertEquals(-1 , Calculator.add("2,-4,3,-5"));
 		}
 		catch(Exception e)
 		{
@@ -60,6 +61,7 @@ public class CalculatorTest {
 	@Test
 	public void testBiggerThenThousand(){
 		assertEquals(2, Calculator.add("1001,2"));
+		assertEquals(0, Calculator.add("1001"));
 	}
 
 	@Test
