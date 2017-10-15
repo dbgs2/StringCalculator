@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Calculator {
 
-	static ArrayList<String> numbersList = new ArrayList<String>();
+	private static ArrayList<String> numbersList = new ArrayList<String>();
 
 
 	public static int add(String text)
@@ -19,14 +19,22 @@ public class Calculator {
 		{
 			if(text.contains(","))
 			{
-				String numbers[] = text.split(",");
+				String numbers[] = text.split(",");				
 				toArrayList(numbers);
 				numberListNewLineSplit();
+				String negatives = negativesNumbers();
+				
+				if(negatives != "")
+				{
+					throw new IllegalArgumentException("Negatives not allowed: " + negatives);
+				}
 				return sum(numbersList);
 			}
 			return 1;
 		}	
 	}
+
+	
 
 	private static int stringToInt(String number)
 	{
@@ -80,4 +88,24 @@ public class Calculator {
 			}
 		}
 	}
+	private static String negativesNumbers()
+	{
+		String negativesNumbers = "";
+		for(String number : numbersList)
+		{					
+			if(stringToInt(number) < 0)
+			{
+				if(negativesNumbers.equals(""))
+				{
+					negativesNumbers += number;
+				}
+				else
+				{
+					negativesNumbers += "," + number;
+				}
+			}
+		}
+		return negativesNumbers;
+	}
+	
 }

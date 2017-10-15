@@ -31,4 +31,29 @@ public class CalculatorTest {
 		assertEquals(1, Calculator.add("1,\n"));
 		assertEquals(2, Calculator.add("\n,1,1\n"));
 	}
+
+	@Test
+	public void testNegetiveAdd(){
+		try
+		{
+			assertEquals(-1 , Calculator.add("-1,2"));
+			assertEquals(-1 , Calculator.add("2,-4,3,-5"));
+		}
+		catch(Exception e)
+		{
+			final String expected = "Negatives not allowed: -1";
+        	assertEquals( expected, e.getMessage());
+		}
+
+		try
+		{
+			assertEquals(-1 , Calculator.add("2,-4,3,-5"));
+		}
+		catch(Exception e)
+		{
+			final String expected = "Negatives not allowed: -4,-5";
+        	assertEquals( expected, e.getMessage());
+		}
+		
+	}
 }
